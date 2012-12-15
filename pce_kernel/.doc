@@ -1,0 +1,10 @@
+base
+	interfaces
+	base classes
+storage_engines
+	web2py_dal
+	other dals
+		have to make filtering, transactions, auto-migration, snapshot saving/restoring
+initializer
+	auto-discover scripts
+
