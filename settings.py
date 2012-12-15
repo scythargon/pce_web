@@ -2,6 +2,7 @@
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+PROJECT_DIR = "/home/argon/Documents/7_semester/diplom/django/pce_web"
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
