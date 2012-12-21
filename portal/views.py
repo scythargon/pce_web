@@ -11,13 +11,17 @@ from settings import *
 from django.http import HttpResponse
 from libs.annoying.fields import JSONField
 
-import sys
-
-sys.path.append(PROJECT_DIR)
 from pce_kernel.storage_engines.web2py_dal.gluon.sql import DAL, Field, Table
-
+import time
 
 @render_to(template="portal/index.html")
 def index(request):
-	print PROJECT_DIR
-	return {'ok':'ok'}
+	db=DAL('sqlite://test.sqlite',folder=PROJECT_DIR+'/portal/db/')
+	ret = []
+	db.define_table('test',Field('time'))
+	for row in db().select(db.test.ALL):
+		print row.time
+		ret.append(row.time)
+	db.test.insert(time=time.ctime())
+	db.commit()
+	return {'ret':ret}
