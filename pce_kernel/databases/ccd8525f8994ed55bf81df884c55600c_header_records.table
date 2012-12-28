@@ -1,0 +1,26 @@
+(dp1
+S'description'
+p2
+S'TEXT'
+p3
+sS'title'
+p4
+S'CHAR(100)'
+p5
+sS'engine_id'
+p6
+S'INTEGER'
+p7
+sS'controller_id'
+p8
+S'INTEGER UNIQUE'
+p9
+sS'storage_key'
+p10
+S'TEXT'
+p11
+sS'id'
+p12
+S'INTEGER PRIMARY KEY AUTOINCREMENT'
+p13
+s.

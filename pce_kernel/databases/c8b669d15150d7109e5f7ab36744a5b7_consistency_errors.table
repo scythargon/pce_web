@@ -1,0 +1,26 @@
+(dp1
+S'cid'
+p2
+S'INTEGER'
+p3
+sS'connection_id'
+p4
+S'INTEGER'
+p5
+sS'error_key'
+p6
+S'CHAR(512)'
+p7
+sS'error'
+p8
+S'TEXT'
+p9
+sS'cause'
+p10
+S'CHAR(512)'
+p11
+sS'id'
+p12
+S'INTEGER PRIMARY KEY AUTOINCREMENT'
+p13
+s.

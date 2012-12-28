@@ -1,0 +1,26 @@
+(dp1
+S'height'
+p2
+S'INTEGER'
+p3
+sS'width'
+p4
+S'INTEGER'
+p5
+sS'filename'
+p6
+S'CHAR(256)'
+p7
+sS'data'
+p8
+S'BLOB'
+p9
+sS'id'
+p10
+S'INTEGER PRIMARY KEY AUTOINCREMENT'
+p11
+sS'data_small'
+p12
+S'BLOB'
+p13
+s.

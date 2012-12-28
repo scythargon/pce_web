@@ -14,6 +14,8 @@ from libs.annoying.fields import JSONField
 from pce_kernel.storage_engines.web2py_dal.gluon.sql import DAL, Field, Table
 import time
 
+from PyConfigEngine import connection
+
 @render_to(template="portal/index.html")
 def index(request):
 	db=DAL('sqlite://test.sqlite',folder=PROJECT_DIR+'/portal/db/')
@@ -25,3 +27,4 @@ def index(request):
 	db.test.insert(time=time.ctime())
 	db.commit()
 	return {'ret':ret}
+

@@ -1,0 +1,588 @@
+timestamp: 2012-07-03T18:44:51.389455
+CREATE TABLE auth_user(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name CHAR(128),
+    last_name CHAR(128),
+    email CHAR(512),
+    password CHAR(512),
+    registration_key CHAR(512),
+    reset_password_key CHAR(512)
+);
+success!
+timestamp: 2012-07-03T18:44:51.499889
+CREATE TABLE auth_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2012-07-03T18:44:51.608777
+CREATE TABLE auth_membership(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    group_id INTEGER REFERENCES auth_group(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2012-07-03T18:44:51.727559
+CREATE TABLE auth_permission(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER REFERENCES auth_group(id) ON DELETE CASCADE,
+    name CHAR(512),
+    table_name CHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2012-07-03T18:44:51.819093
+CREATE TABLE auth_event(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time_stamp TIMESTAMP,
+    client_ip CHAR(512),
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    origin CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2012-07-03T18:44:52.130301
+CREATE TABLE connections(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title CHAR(32),
+    description CHAR(512),
+    configuration INTEGER,
+    storage INTEGER,
+    uri CHAR(512),
+    owner INTEGER
+);
+success!
+timestamp: 2012-07-03T18:44:52.208973
+CREATE TABLE consistency_errors(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    connection_id INTEGER,
+    cid INTEGER,
+    cause CHAR(512),
+    error_key CHAR(512),
+    error TEXT
+);
+success!
+timestamp: 2012-07-03T18:44:52.285389
+CREATE TABLE appearance_co_views(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER,
+    connection_id INTEGER,
+    cid INTEGER,
+    cc_view_name CHAR(512)
+);
+success!
+timestamp: 2012-07-03T18:44:52.364844
+CREATE TABLE activity_logs(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    date TIMESTAMP,
+    user_id INTEGER,
+    target CHAR(512),
+    action CHAR(512),
+    title CHAR(512),
+    user_info CHAR(512),
+    caused_changes TEXT
+);
+success!
+timestamp: 2012-07-03T18:44:52.478874
+CREATE TABLE plugin_importer_lia_files(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    data TEXT,
+    filename CHAR(512),
+    date TIMESTAMP
+);
+success!
+timestamp: 2012-07-03T18:44:52.567274
+CREATE TABLE plugin_services_scripts(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    connection_id INTEGER,
+    served_name CHAR(512),
+    title CHAR(512),
+    description CHAR(512),
+    test_url CHAR(512),
+    code TEXT,
+    template TEXT,
+    modified TIMESTAMP,
+    author INTEGER
+);
+success!
+timestamp: 2012-07-03T18:47:22.886850
+CREATE TABLE header_records(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    controller_id INTEGER UNIQUE,
+    engine_id INTEGER,
+    title CHAR(100),
+    description TEXT,
+    storage_key TEXT
+);
+success!
+timestamp: 2012-07-03T18:48:31.394055
+CREATE TABLE sec_cls_server(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(63)
+);
+success!
+timestamp: 2012-07-03T18:48:31.505484
+CREATE TABLE sec_cls_ioc(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(63)
+);
+success!
+timestamp: 2012-07-03T18:48:31.602002
+CREATE TABLE sec_cls_device(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(63)
+);
+success!
+timestamp: 2012-07-03T18:48:31.695785
+CREATE TABLE sec_cls_device_type(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(63)
+);
+success!
+timestamp: 2012-07-03T18:48:31.822263
+CREATE TABLE sec_cls_device_channel(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(63)
+);
+success!
+timestamp: 2012-07-03T18:48:31.922049
+CREATE TABLE sec_cls_device_channel_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    is_writable CHAR(1),
+    name CHAR(63),
+    quantity INTEGER
+);
+success!
+timestamp: 2012-07-03T18:48:32.021233
+CREATE TABLE sec_cls_device_link(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(63)
+);
+success!
+timestamp: 2012-07-03T18:48:32.169724
+CREATE TABLE sec_cls_device_link_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(63),
+    quantity INTEGER
+);
+success!
+timestamp: 2012-07-03T18:48:32.255609
+CREATE TABLE sem_mdl_components(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Unit_id INTEGER,
+    Part_id INTEGER,
+    Part_cid INTEGER,
+    Unit_cid INTEGER
+);
+success!
+timestamp: 2012-07-03T18:48:32.335923
+CREATE TABLE sem_mdl_types(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Subject_id INTEGER,
+    Type_cid INTEGER,
+    Subject_cid INTEGER,
+    Type_id INTEGER
+);
+success!
+timestamp: 2012-07-03T18:48:32.435853
+CREATE TABLE sem_mdl_responsibilities(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Responsible_cid INTEGER,
+    Subject_id INTEGER,
+    Subject_cid INTEGER,
+    Responsible_id INTEGER
+);
+success!
+timestamp: 2012-07-03T18:48:32.568778
+CREATE TABLE sem_mdl_logical_connections(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    To_id INTEGER,
+    To_cid INTEGER,
+    From_cid INTEGER,
+    From_id INTEGER
+);
+success!
+DELETE FROM consistency_errors;
+DELETE FROM sqlite_sequence WHERE name='consistency_errors';
+success!
+DELETE FROM consistency_errors;
+DELETE FROM sqlite_sequence WHERE name='consistency_errors';
+success!
+DELETE FROM consistency_errors;
+DELETE FROM sqlite_sequence WHERE name='consistency_errors';
+success!
+DELETE FROM consistency_errors;
+DELETE FROM sqlite_sequence WHERE name='consistency_errors';
+success!
+timestamp: 2012-09-13T18:53:01.978135
+CREATE TABLE header_records(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    controller_id INTEGER UNIQUE,
+    engine_id INTEGER,
+    title CHAR(100),
+    description TEXT,
+    storage_key TEXT
+);
+success!
+timestamp: 2012-09-13T18:53:09.576744
+CREATE TABLE sec_cls_middleware(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(63)
+);
+success!
+timestamp: 2012-09-13T18:53:09.653216
+CREATE TABLE sec_cls_server(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(63)
+);
+success!
+timestamp: 2012-09-13T18:53:09.728247
+CREATE TABLE sec_cls_bridge(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(63)
+);
+success!
+timestamp: 2012-09-13T18:53:09.796073
+CREATE TABLE sec_cls_bpm(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(63)
+);
+success!
+timestamp: 2012-09-13T18:53:09.903585
+CREATE TABLE sec_cls_bpm_type(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(63)
+);
+success!
+timestamp: 2012-09-13T18:53:09.987992
+CREATE TABLE sem_mdl_types(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Subject_id INTEGER,
+    Type_cid INTEGER,
+    Subject_cid INTEGER,
+    Type_id INTEGER
+);
+success!
+timestamp: 2012-09-13T18:53:10.060688
+CREATE TABLE sem_mdl_logical_connections(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    To_id INTEGER,
+    To_cid INTEGER,
+    From_cid INTEGER,
+    From_id INTEGER
+);
+success!
+timestamp: 2012-09-21T12:19:34.747717
+CREATE TABLE header_records(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    controller_id INTEGER UNIQUE,
+    engine_id INTEGER,
+    title CHAR(100),
+    description TEXT,
+    storage_key TEXT
+);
+success!
+timestamp: 2012-09-21T14:54:58.477996
+ALTER TABLE sec_cls_bpm ADD is_writable CHAR(1);
+timestamp: 2012-09-21T14:54:58.567874
+ALTER TABLE sec_cls_bpm ADD quantity INTEGER;
+timestamp: 2012-09-21T14:54:58.640000
+ALTER TABLE sec_cls_bpm_type ADD quantity INTEGER;
+timestamp: 2012-09-21T15:01:50.112033
+CREATE TABLE sec_cls_device_connector_type(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(63)
+);
+success!
+DELETE FROM consistency_errors;
+DELETE FROM sqlite_sequence WHERE name='consistency_errors';
+success!
+DELETE FROM consistency_errors;
+DELETE FROM sqlite_sequence WHERE name='consistency_errors';
+success!
+DELETE FROM consistency_errors;
+DELETE FROM sqlite_sequence WHERE name='consistency_errors';
+success!
+DELETE FROM consistency_errors;
+DELETE FROM sqlite_sequence WHERE name='consistency_errors';
+success!
+DELETE FROM consistency_errors;
+DELETE FROM sqlite_sequence WHERE name='consistency_errors';
+success!
+DELETE FROM consistency_errors;
+DELETE FROM sqlite_sequence WHERE name='consistency_errors';
+success!
+DELETE FROM consistency_errors;
+DELETE FROM sqlite_sequence WHERE name='consistency_errors';
+success!
+DELETE FROM consistency_errors;
+DELETE FROM sqlite_sequence WHERE name='consistency_errors';
+success!
+DELETE FROM consistency_errors;
+DELETE FROM sqlite_sequence WHERE name='consistency_errors';
+success!
+DELETE FROM consistency_errors;
+DELETE FROM sqlite_sequence WHERE name='consistency_errors';
+success!
+timestamp: 2012-09-21T18:35:14.516755
+ALTER TABLE sec_cls_middleware ADD unique_name CHAR(63);
+timestamp: 2012-09-21T18:35:14.587294
+ALTER TABLE sec_cls_middleware ADD address CHAR(63);
+timestamp: 2012-09-21T18:35:14.645605
+ALTER TABLE sec_cls_middleware ADD description CHAR(63);
+timestamp: 2012-09-21T18:35:14.725537
+ALTER TABLE sec_cls_server ADD unique_name CHAR(63);
+timestamp: 2012-09-21T18:35:14.811728
+ALTER TABLE sec_cls_server ADD address CHAR(63);
+timestamp: 2012-09-21T18:35:14.870074
+ALTER TABLE sec_cls_server ADD description CHAR(63);
+timestamp: 2012-09-21T18:35:14.966914
+ALTER TABLE sec_cls_bridge ADD unique_name CHAR(63);
+timestamp: 2012-09-21T18:35:15.053263
+ALTER TABLE sec_cls_bridge ADD active_line INTEGER;
+timestamp: 2012-09-21T18:35:15.120327
+ALTER TABLE sec_cls_bridge ADD can_address CHAR(63);
+timestamp: 2012-09-21T18:35:15.186513
+ALTER TABLE sec_cls_bridge ADD type CHAR(63);
+timestamp: 2012-09-21T18:35:15.245282
+ALTER TABLE sec_cls_bridge ADD description CHAR(63);
+timestamp: 2012-09-21T18:35:15.324428
+ALTER TABLE sec_cls_bpm ADD unique_name CHAR(63);
+timestamp: 2012-09-21T18:35:15.411841
+ALTER TABLE sec_cls_bpm ADD description CHAR(63);
+timestamp: 2012-09-21T18:35:15.520309
+ALTER TABLE sec_cls_bpm ADD zero_file CHAR(255);
+timestamp: 2012-09-21T18:35:15.628402
+ALTER TABLE sec_cls_bpm ADD address INTEGER;
+timestamp: 2012-09-21T18:35:15.699213
+ALTER TABLE sec_cls_bpm_type ADD unique_name CHAR(63);
+timestamp: 2012-09-21T18:35:15.761649
+ALTER TABLE sec_cls_bpm_type ADD description CHAR(63);
+timestamp: 2012-09-21T18:35:15.823839
+CREATE TABLE sec_cls_mode(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    unique_name CHAR(63),
+    name CHAR(63),
+    description CHAR(63)
+);
+success!
+timestamp: 2012-09-21T18:35:15.899265
+CREATE TABLE sec_cls_algorithm(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    unique_name CHAR(63),
+    name CHAR(63),
+    description CHAR(63)
+);
+success!
+timestamp: 2012-09-21T18:35:15.981973
+CREATE TABLE sec_cls_bridge_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    unique_name CHAR(63),
+    name CHAR(63),
+    description CHAR(63)
+);
+success!
+DELETE FROM consistency_errors;
+DELETE FROM sqlite_sequence WHERE name='consistency_errors';
+success!
+timestamp: 2012-09-27T10:59:30.088378
+ALTER TABLE sec_cls_server ADD unique_name CHAR(63);
+timestamp: 2012-09-27T10:59:30.204539
+ALTER TABLE sec_cls_server ADD address CHAR(63);
+timestamp: 2012-09-27T10:59:30.271160
+ALTER TABLE sec_cls_server ADD description CHAR(63);
+timestamp: 2012-09-27T10:59:30.363905
+ALTER TABLE sec_cls_ioc ADD unique_name CHAR(63);
+timestamp: 2012-09-27T10:59:30.429515
+ALTER TABLE sec_cls_ioc ADD address CHAR(63);
+timestamp: 2012-09-27T10:59:30.487764
+ALTER TABLE sec_cls_ioc ADD description CHAR(63);
+timestamp: 2012-09-27T10:59:30.551615
+ALTER TABLE sec_cls_device_type ADD unique_name CHAR(63);
+timestamp: 2012-09-27T10:59:30.620986
+ALTER TABLE sec_cls_device_type ADD active_line INTEGER;
+timestamp: 2012-09-27T10:59:30.679292
+ALTER TABLE sec_cls_device_type ADD can_address CHAR(63);
+timestamp: 2012-09-27T10:59:30.729279
+ALTER TABLE sec_cls_device_type ADD type CHAR(63);
+timestamp: 2012-09-27T10:59:30.779238
+ALTER TABLE sec_cls_device_type ADD description CHAR(63);
+timestamp: 2012-09-27T10:59:30.834862
+ALTER TABLE sec_cls_device_channel_group ADD unique_name CHAR(63);
+timestamp: 2012-09-27T10:59:30.895840
+ALTER TABLE sec_cls_device_channel_group ADD description CHAR(63);
+timestamp: 2012-09-27T10:59:30.954248
+ALTER TABLE sec_cls_device_channel_group ADD zero_file CHAR(255);
+timestamp: 2012-09-27T10:59:31.145709
+ALTER TABLE sec_cls_device_channel_group ADD address INTEGER;
+timestamp: 2012-09-27T10:59:31.302317
+ALTER TABLE sec_cls_device_link_group ADD unique_name CHAR(63);
+timestamp: 2012-09-27T10:59:31.438209
+ALTER TABLE sec_cls_device_link_group ADD description CHAR(63);
+timestamp: 2012-09-27T10:59:31.617805
+ALTER TABLE sec_cls_device_channel ADD unique_name CHAR(63);
+timestamp: 2012-09-27T10:59:31.737101
+ALTER TABLE sec_cls_device_channel ADD description CHAR(63);
+timestamp: 2012-09-27T10:59:31.852525
+ALTER TABLE sec_cls_device_link ADD unique_name CHAR(63);
+timestamp: 2012-09-27T10:59:31.986938
+ALTER TABLE sec_cls_device_link ADD description CHAR(63);
+timestamp: 2012-09-27T10:59:32.164815
+ALTER TABLE sec_cls_device ADD unique_name CHAR(63);
+timestamp: 2012-09-27T10:59:32.378362
+ALTER TABLE sec_cls_device ADD description CHAR(63);
+timestamp: 2012-09-27T10:59:51.329993
+CREATE TABLE sec_cls_server(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    unique_name CHAR(63),
+    Address CHAR(63),
+    name CHAR(63),
+    description CHAR(63)
+);
+success!
+timestamp: 2012-09-28T11:23:28.426294
+CREATE TABLE plugin_config_explorer_layers(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title CHAR(256),
+    image_id INTEGER,
+    order_num INTEGER
+);
+success!
+timestamp: 2012-09-28T11:23:28.595769
+CREATE TABLE plugin_config_explorer_images(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    filename CHAR(256),
+    data BLOB,
+    data_small BLOB,
+    width INTEGER,
+    height INTEGER
+);
+success!
+timestamp: 2012-09-28T11:23:28.685728
+CREATE TABLE plugin_config_explorer_places(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    ent_c_id INTEGER,
+    ent_id INTEGER,
+    layer_id INTEGER,
+    x DOUBLE,
+    y DOUBLE
+);
+success!
+DELETE FROM consistency_errors;
+DELETE FROM sqlite_sequence WHERE name='consistency_errors';
+success!
+timestamp: 2012-09-28T11:52:59.007185
+CREATE TABLE plugin_config_explorer_layers(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title CHAR(256),
+    image_id INTEGER,
+    order_num INTEGER
+);
+success!
+timestamp: 2012-09-28T11:52:59.110902
+CREATE TABLE plugin_config_explorer_images(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    filename CHAR(256),
+    data BLOB,
+    data_small BLOB,
+    width INTEGER,
+    height INTEGER
+);
+success!
+timestamp: 2012-09-28T11:52:59.185723
+CREATE TABLE plugin_config_explorer_places(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    ent_c_id INTEGER,
+    ent_id INTEGER,
+    layer_id INTEGER,
+    x DOUBLE,
+    y DOUBLE
+);
+success!
+timestamp: 2012-09-28T15:38:53.839250
+ALTER TABLE sec_cls_device ADD params TEXT;
+timestamp: 2012-11-15T12:11:11.948259
+CREATE TABLE sec_cls_algorithm_parameters(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    unique_name CHAR(63),
+    name CHAR(63),
+    description CHAR(255)
+);
+success!
+timestamp: 2012-11-15T18:40:51.116588
+ALTER TABLE sec_cls_server ADD note TEXT;
+timestamp: 2012-11-15T18:40:51.304410
+ALTER TABLE sec_cls_server ADD readable_name CHAR(63);
+timestamp: 2012-11-15T18:40:51.492898
+ALTER TABLE sec_cls_ioc ADD note TEXT;
+timestamp: 2012-11-15T18:40:51.669564
+ALTER TABLE sec_cls_ioc ADD readable_name CHAR(63);
+timestamp: 2012-11-15T18:40:51.824956
+ALTER TABLE sec_cls_device ADD note TEXT;
+timestamp: 2012-11-15T18:40:52.001970
+ALTER TABLE sec_cls_device ADD readable_name CHAR(63);
+timestamp: 2012-11-15T18:40:52.165634
+ALTER TABLE sec_cls_device_type ADD readable_name CHAR(63);
+timestamp: 2012-11-15T18:40:52.357751
+ALTER TABLE sec_cls_device_type ADD note TEXT;
+timestamp: 2012-11-15T18:40:52.523911
+ALTER TABLE sec_cls_device_type ADD params TEXT;
+timestamp: 2012-11-15T18:40:52.667945
+ALTER TABLE sec_cls_device_type ADD template CHAR(63);
+timestamp: 2012-11-15T18:40:52.824023
+ALTER TABLE sec_cls_device_channel ADD note TEXT;
+timestamp: 2012-11-15T18:40:53.243172
+ALTER TABLE sec_cls_device_channel ADD default_value DOUBLE;
+timestamp: 2012-11-15T18:40:53.607570
+ALTER TABLE sec_cls_device_channel ADD readable_name CHAR(63);
+timestamp: 2012-11-15T18:40:53.775513
+ALTER TABLE sec_cls_device_channel_group ADD default_value DOUBLE;
+timestamp: 2012-11-15T18:40:53.951033
+ALTER TABLE sec_cls_device_channel_group ADD readable_name CHAR(63);
+timestamp: 2012-11-15T18:40:54.117206
+ALTER TABLE sec_cls_device_channel_group ADD max_value DOUBLE;
+timestamp: 2012-11-15T18:40:54.295572
+ALTER TABLE sec_cls_device_channel_group ADD min_value DOUBLE;
+timestamp: 2012-11-15T18:40:54.461630
+ALTER TABLE sec_cls_device_channel_group ADD note TEXT;
+timestamp: 2012-11-15T18:40:54.627748
+ALTER TABLE sec_cls_device_channel_group ADD params TEXT;
+timestamp: 2012-11-15T18:40:54.805462
+ALTER TABLE sec_cls_device_link ADD note TEXT;
+timestamp: 2012-11-15T18:40:54.970998
+ALTER TABLE sec_cls_device_link ADD readable_name CHAR(63);
+timestamp: 2012-11-15T18:40:55.114714
+ALTER TABLE sec_cls_device_link_group ADD note TEXT;
+timestamp: 2012-11-15T18:40:55.259200
+ALTER TABLE sec_cls_device_link_group ADD readable_name CHAR(63);
+timestamp: 2012-11-15T18:40:55.467541
+ALTER TABLE sec_cls_device_connector_type ADD note TEXT;
+timestamp: 2012-11-15T18:40:55.701874
+ALTER TABLE sec_cls_device_connector_type ADD readable_name CHAR(63);
+timestamp: 2012-11-16T22:59:15.917296
+ALTER TABLE sec_cls_bpm ADD background_file CHAR(255);
+timestamp: 2012-11-16T22:59:16.132535
+ALTER TABLE sec_cls_bpm_type ADD i_koef DOUBLE;
+timestamp: 2012-11-16T22:59:16.317182
+ALTER TABLE sec_cls_bpm_type ADD angle DOUBLE;
+timestamp: 2012-11-16T22:59:16.461306
+ALTER TABLE sec_cls_bpm_type ADD step_x DOUBLE;
+timestamp: 2012-11-16T22:59:16.627558
+ALTER TABLE sec_cls_bpm_type ADD step_z DOUBLE;
+timestamp: 2012-11-16T22:59:16.771721
+ALTER TABLE sec_cls_bpm_type ADD shear_x DOUBLE;
+timestamp: 2012-11-16T22:59:16.937771
+ALTER TABLE sec_cls_bpm_type ADD shear_z DOUBLE;
+timestamp: 2012-11-16T22:59:17.183936
+ALTER TABLE sec_cls_algorithm_parameters ADD data_backdir_x CHAR(1);
+timestamp: 2012-11-16T22:59:17.347466
+ALTER TABLE sec_cls_algorithm_parameters ADD data_backdir_z CHAR(1);
+timestamp: 2012-11-16T22:59:17.480373
+ALTER TABLE sec_cls_algorithm_parameters ADD scale_x DOUBLE;
+timestamp: 2012-11-16T22:59:17.635525
+ALTER TABLE sec_cls_algorithm_parameters ADD scale_z DOUBLE;
+timestamp: 2012-11-16T23:06:41.529104
+ALTER TABLE sec_cls_bpm_type ADD params TEXT;
+timestamp: 2012-11-16T23:06:41.738195
+ALTER TABLE sec_cls_bpm_type ADD type CHAR(63);

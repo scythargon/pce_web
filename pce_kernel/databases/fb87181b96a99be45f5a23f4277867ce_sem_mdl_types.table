@@ -1,0 +1,22 @@
+(dp1
+S'Subject_id'
+p2
+S'INTEGER'
+p3
+sS'Type_id'
+p4
+S'INTEGER'
+p5
+sS'id'
+p6
+S'INTEGER PRIMARY KEY AUTOINCREMENT'
+p7
+sS'Subject_cid'
+p8
+S'INTEGER'
+p9
+sS'Type_cid'
+p10
+S'INTEGER'
+p11
+s.

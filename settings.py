@@ -6,6 +6,7 @@ PROJECT_DIR = "/home/argon/Documents/7_semester/diplom/django/pce_web"
 
 sys.path.append(PROJECT_DIR)
 sys.path.append(PROJECT_DIR + "/pce_kernel/storage_engines/web2py_dal")
+import PyConfigEngine
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -120,6 +121,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'portal',
+    'PyConfigEngine',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:

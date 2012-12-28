@@ -1,0 +1,22 @@
+(dp1
+S'To_id'
+p2
+S'INTEGER'
+p3
+sS'From_id'
+p4
+S'INTEGER'
+p5
+sS'To_cid'
+p6
+S'INTEGER'
+p7
+sS'id'
+p8
+S'INTEGER PRIMARY KEY AUTOINCREMENT'
+p9
+sS'From_cid'
+p10
+S'INTEGER'
+p11
+s.

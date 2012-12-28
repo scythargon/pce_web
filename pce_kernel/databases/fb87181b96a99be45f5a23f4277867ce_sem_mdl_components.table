@@ -1,0 +1,22 @@
+(dp1
+S'Part_cid'
+p2
+S'INTEGER'
+p3
+sS'Unit_cid'
+p4
+S'INTEGER'
+p5
+sS'id'
+p6
+S'INTEGER PRIMARY KEY AUTOINCREMENT'
+p7
+sS'Part_id'
+p8
+S'INTEGER'
+p9
+sS'Unit_id'
+p10
+S'INTEGER'
+p11
+s.

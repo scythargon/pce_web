@@ -1,0 +1,26 @@
+(dp1
+S'unique_name'
+p2
+S'CHAR(63)'
+p3
+sS'name'
+p4
+S'CHAR(63)'
+p5
+sS'readable_name'
+p6
+S'CHAR(63)'
+p7
+sS'note'
+p8
+S'TEXT'
+p9
+sS'id'
+p10
+S'INTEGER PRIMARY KEY AUTOINCREMENT'
+p11
+sS'description'
+p12
+S'CHAR(63)'
+p13
+s.

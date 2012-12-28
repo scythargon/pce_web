@@ -1,0 +1,22 @@
+(dp1
+S'description'
+p2
+S'CHAR(63)'
+p3
+sS'unique_name'
+p4
+S'CHAR(63)'
+p5
+sS'address'
+p6
+S'CHAR(63)'
+p7
+sS'id'
+p8
+S'INTEGER PRIMARY KEY AUTOINCREMENT'
+p9
+sS'name'
+p10
+S'CHAR(63)'
+p11
+s.

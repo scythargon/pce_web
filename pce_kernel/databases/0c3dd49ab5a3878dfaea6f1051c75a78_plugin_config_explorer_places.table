@@ -1,0 +1,24 @@
+(dp1
+S'layer_id'
+p2
+S'INTEGER'
+p3
+sS'ent_c_id'
+p4
+S'INTEGER'
+p5
+sS'ent_id'
+p6
+S'INTEGER'
+p7
+sS'y'
+S'DOUBLE'
+p8
+sS'x'
+S'DOUBLE'
+p9
+sS'id'
+p10
+S'INTEGER PRIMARY KEY AUTOINCREMENT'
+p11
+s.
